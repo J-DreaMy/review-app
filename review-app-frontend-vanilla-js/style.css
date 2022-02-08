@@ -1,0 +1,168 @@
+body {
+  font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+textarea {
+  font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
+  resize: none;
+}
+
+#app {
+  text-align: center;
+  color: #000;
+  margin-top: 30px;
+}
+
+.form-input {
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.form-input:focus {
+  outline: none !important;
+}
+
+.text-h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.text-semibold {
+  font-weight: 500;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.spacer {
+  flex-grow: 1 !important;
+}
+
+.button {
+  padding: 10px 24px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #757575;
+  font-family: "Helvetica";
+  font-size: 17px;
+  font-weight: 600;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.1));
+}
+
+.seperator {
+  border: 1px solid #b9b9b9;
+  margin: 16px 0px;
+}
+
+.product-card {
+  margin: auto;
+  width: max-content;
+}
+
+.product-title {
+  font-size: 44px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.product-score {
+  font-size: 40px;
+  margin: 0 8px 0 2px;
+}
+
+.review-section {
+  text-align: left;
+}
+
+.reviews-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.review-box {
+  margin: 24px 0px;
+}
+
+.review-text {
+  color: #8d8d8d;
+}
+
+.star {
+  width: 30px;
+  height: 30px;
+  margin: 0px 2.5px;
+}
+
+.star-off {
+  background: url("./assets/star-off.svg") no-repeat;
+}
+
+.star-on {
+  background: url("./assets/star-on.svg") no-repeat;
+}
+
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.modal-bg {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-container {
+  border-radius: 10px;
+  background: #fff;
+  position: relative;
+  padding: 24px;
+  width: 380px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  outline: none;
+  appearance: none;
+  color: red;
+  background: none;
+  border: 0px;
+  font-weight: bold;
+  cursor: pointer;
+}
