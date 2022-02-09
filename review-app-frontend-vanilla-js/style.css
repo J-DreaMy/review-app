@@ -24,6 +24,10 @@ textarea {
   outline: none !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .text-h1 {
   font-size: 28px;
   font-weight: 600;
@@ -83,9 +87,9 @@ textarea {
   margin-bottom: 1.4rem;
 }
 
-.product-score {
-  font-size: 40px;
-  margin: 0 8px 0 2px;
+.product-rating {
+  font-size: 38px;
+  margin: 0 16px 0 2px;
 }
 
 .review-section {
@@ -151,7 +155,6 @@ textarea {
   background: #fff;
   position: relative;
   padding: 24px;
-  width: 380px;
 }
 
 .modal-close {

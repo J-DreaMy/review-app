@@ -15,81 +15,42 @@
 <body>
   <div id="app">
     <div class="product-card">
-      <div class="product-title">The Minimalist Entrepreneur</div>
+      <div id="product-title" class="product-title">...</div>
       <div class="row">
         <div class="row">
-          <div class="product-score">3.8</div>
-          <div style="width: 8px;"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-off"></div>
+          <div id="product-rating" class="product-rating">0</div>
         </div>
         <div class="spacer"></div>
-        <button class="button" data-modal="modal-one">Add review</button>
+        <button onclick="resetForm()" class="button" data-modal="modal-one">Add review</button>
       </div>
       <div style="height: 16px"></div>
       <div class="seperator"></div>
       <div style="height: 8px"></div>
-      <div class="review-section">
+      <div id="review-section" class="review-section">
         <div class="reviews-text">Reviews</div>
-        <div class="row review-box">
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-off"></div>
-          <div style="width: 16px;"></div>
-          <div class="text-bold">4</div>
-          <div>, &nbsp;</div>
-          <div class="review-text">book was full of fluff</div>
-        </div>
-        <div class="row review-box">
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-off"></div>
-          <div class="star star-off"></div>
-          <div style="width: 16px;"></div>
-          <div class="text-bold">3</div>
-          <div>, &nbsp;</div>
-          <div class="review-text">book was fluff</div>
-        </div>
-        <div class="row review-box">
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-on"></div>
-          <div class="star star-off"></div>
-          <div class="star star-off"></div>
-          <div style="width: 16px;"></div>
-          <div class="text-bold">4</div>
-          <div>, &nbsp;</div>
-          <div class="review-text">book was amazing</div>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="modal" id="modal-one">
     <div class="modal-bg modal-exit"></div>
-    <div class="modal-container column" style="gap: 20px;">
+    <form class="modal-container column" style="width: 420px; gap: 20px;">
       <div class="text-h1">What's Your rating?</div>
       <div class="text-semibold">Rating</div>
-      <div class="row">
-        <div class="star star-on"></div>
-        <div class="star star-on"></div>
-        <div class="star star-on"></div>
-        <div class="star star-on"></div>
-        <div class="star star-off"></div>
+      <div id="input-rating" class="row">
+        <div onclick="addRatingReview(1)" class="star star-on cursor-pointer"></div>
+        <div onclick="addRatingReview(2)" class="star star-off cursor-pointer"></div>
+        <div onclick="addRatingReview(3)" class="star star-off cursor-pointer"></div>
+        <div onclick="addRatingReview(4)" class="star star-off cursor-pointer"></div>
+        <div onclick="addRatingReview(5)" class="star star-off cursor-pointer"></div>
       </div>
       <div>Review</div>
-      <textarea class="form-input" placeholder="Start typing..."></textarea>
-      <button style="width: 180px;" class="button modal-exit" data-modal="modal-one">Submit review</button>
-    </div>
+      <textarea id="input-text-review" class="form-input" placeholder="Start typing..."></textarea>
+      <button type="submit" onclick="createReview()" style="width: 180px;" class="button modal-exit" data-modal="modal-one">Submit review</button>
+    </form>
   </div>
 
-  <script type="module" src="/main.js"></script>
+  <script src="/main.js"></script>
 </body>
 
 </html>

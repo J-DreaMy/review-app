@@ -21,7 +21,9 @@ export class ProductReviewService {
 
   async create(dto: CreateProductReviewDto): Promise<ProductReview> {
     const productReview = this.productReviewRepository.create(dto);
-    productReview.product = await this.productService.findOne(dto.productId);
+    const product = await this.productService.findOne(dto.productId);
+    product.calculateNewRating(productReview.rating);
+    productReview.product = product;
     return productReview.save();
   }
 

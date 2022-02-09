@@ -35,8 +35,4 @@ export class ProductService {
     await this.productRepository.remove(product);
     return { "message": "Product succesfully deleted" };
   }
-
-  async calculateRatingProduct(productId: number) {
-    const product = await this.findOne(productId, { relations: ['reviews'] });
-  }
 }
