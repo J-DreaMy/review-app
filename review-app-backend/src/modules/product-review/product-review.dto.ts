@@ -20,4 +20,12 @@ export class CreateProductReviewDto {
   rating: number;
 }
 
-export class UpdateProductReviewDto extends CreateProductReviewDto { }
+export class UpdateProductReviewDto {
+  @IsString()
+  @IsNotEmpty()
+  text: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  rating: number;
+}

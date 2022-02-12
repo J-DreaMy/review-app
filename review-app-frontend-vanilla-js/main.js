@@ -40,6 +40,8 @@ async function getProduct(id) {
 async function createReview(event) {
   event.preventDefault();
   review.text = document.getElementById("input-text-review").value;
+  if (!review.text) return alert("Please input your review!");
+
   const res = await fetch(`${serverUrl}/product-reviews`, {
     method: "POST",
     headers: {

@@ -1,6 +1,6 @@
-import { ProductReview } from './../product-review/product-review.entity';
-import { Model } from 'src/common/core/model';
+import { Model } from '../../common/core/model';
 import { Column, Entity, OneToMany } from 'typeorm';
+import { ProductReview } from './../product-review/product-review.entity';
 
 @Entity()
 export class Product extends Model {

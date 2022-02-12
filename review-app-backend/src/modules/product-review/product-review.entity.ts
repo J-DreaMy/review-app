@@ -1,5 +1,5 @@
+import { Model } from '../../common/core/model';
 import { Product } from './../product/product.entity';
-import { Model } from 'src/common/core/model';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity()

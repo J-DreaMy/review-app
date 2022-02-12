@@ -37,7 +37,10 @@ export class ProductReviewService {
   async update(id: number, dto: UpdateProductReviewDto): Promise<ProductReview> {
     const productReview = await this.findOne(id);
     const updatedProductReview = this.productReviewRepository.create({ ...productReview, ...dto });
-    updatedProductReview.product = await this.productService.findOne(dto.productId);
+    const product = await this.productService.findOne(productReview.productId);
+    product.calculateNewRating(productReview.rating);
+    await product.save();
+    updatedProductReview.product = product;
     return updatedProductReview.save();
   }
 

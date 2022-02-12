@@ -33,6 +33,6 @@ export class ProductService {
   async remove(id: number) {
     const product = await this.findOne(id);
     await this.productRepository.remove(product);
-    return { "message": "Product succesfully deleted" };
+    return { "message": "Product successfully deleted" };
   }
 }
