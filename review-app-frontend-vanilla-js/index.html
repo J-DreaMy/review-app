@@ -17,11 +17,16 @@
     <div class="product-card">
       <div id="product-title" class="product-title">...</div>
       <div class="row">
-        <div class="row">
-          <div id="product-rating" class="product-rating">0</div>
+        <div id="product-rating-section" class="row">
+          <div class="product-rating">0</div>
+          <div class="star star-off"></div>
+          <div class="star star-off"></div>
+          <div class="star star-off"></div>
+          <div class="star star-off"></div>
+          <div class="star star-off"></div>
         </div>
         <div class="spacer"></div>
-        <button onclick="resetForm()" class="button" data-modal="modal-one">Add review</button>
+        <button id="add-review-btn" class="btn">Add review</button>
       </div>
       <div style="height: 16px"></div>
       <div class="seperator"></div>
@@ -32,9 +37,9 @@
     </div>
   </div>
 
-  <div class="modal" id="modal-one">
+  <div id="review-modal" class="modal">
     <div class="modal-bg modal-exit"></div>
-    <form class="modal-container column" style="width: 420px; gap: 20px;">
+    <form id="review-form" class="modal-container column" style="width: 420px; gap: 20px;">
       <div class="text-h1">What's Your rating?</div>
       <div class="text-semibold">Rating</div>
       <div id="input-rating" class="row">
@@ -45,12 +50,12 @@
         <div onclick="addRatingReview(5)" class="star star-off cursor-pointer"></div>
       </div>
       <div>Review</div>
-      <textarea id="input-text-review" class="form-input" placeholder="Start typing..."></textarea>
-      <button type="submit" onclick="createReview()" style="width: 180px;" class="button modal-exit" data-modal="modal-one">Submit review</button>
+      <input id="input-text-review" class="form-input" placeholder="Start typing..." />
+      <button id="review-submit-btn" class="btn" type="submit" style="width: 180px;">Submit review</button>
     </form>
   </div>
 
-  <script src="/main.js"></script>
+  <script src="/main.js" type="module"></script>
 </body>
 
 </html>

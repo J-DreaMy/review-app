@@ -4,7 +4,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class ProductReview extends Model {
-  @ManyToOne(() => Product, product => product.id)
+  @ManyToOne(() => Product, product => product.id, { onUpdate: "CASCADE", onDelete: "CASCADE" })
   @JoinColumn({ name: 'product_id' })
   product: Product;
 

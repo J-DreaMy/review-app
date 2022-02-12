@@ -23,6 +23,7 @@ export class ProductReviewService {
     const productReview = this.productReviewRepository.create(dto);
     const product = await this.productService.findOne(dto.productId);
     product.calculateNewRating(productReview.rating);
+    await product.save();
     productReview.product = product;
     return productReview.save();
   }

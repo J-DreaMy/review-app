@@ -54,10 +54,11 @@ textarea {
 }
 
 .spacer {
+  margin: 0px 4px;
   flex-grow: 1 !important;
 }
 
-.button {
+.btn {
   padding: 10px 24px;
   cursor: pointer;
   background-color: #fff;

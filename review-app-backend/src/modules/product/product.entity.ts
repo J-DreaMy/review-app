@@ -13,10 +13,11 @@ export class Product extends Model {
   @Column('int', { default: 0 })
   totalReview: number;
 
-  @OneToMany(() => ProductReview, review => review.product, { onUpdate: "CASCADE", onDelete: "CASCADE" })
+  @OneToMany(() => ProductReview, review => review.product, { cascade: true })
   reviews: ProductReview[];
 
   calculateNewRating(rating: number) {
+    this.totalReview += 1;
     this.rating = this.rating * (this.totalReview - 1) / this.totalReview + rating / this.totalReview;
   }
 }
