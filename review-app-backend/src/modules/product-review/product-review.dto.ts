@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
+import { IsRatingValid } from "../../common/validators/is-rating-valid.validator";
 
 export class ProductQuery {
   @IsOptional()
@@ -15,8 +16,11 @@ export class CreateProductReviewDto {
   @IsNotEmpty()
   text: string;
 
-  @IsNumber()
   @IsNotEmpty()
+  @IsNumber()
+  @Min(0.5)
+  @Max(5)
+  @IsRatingValid()
   rating: number;
 }
 
@@ -25,7 +29,10 @@ export class UpdateProductReviewDto {
   @IsNotEmpty()
   text: string;
 
-  @IsNumber()
   @IsNotEmpty()
+  @IsNumber()
+  @Min(0.5)
+  @Max(5)
+  @IsRatingValid()
   rating: number;
 }

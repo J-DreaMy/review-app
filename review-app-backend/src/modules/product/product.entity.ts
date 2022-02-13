@@ -16,7 +16,7 @@ export class Product extends Model {
   @OneToMany(() => ProductReview, review => review.product, { cascade: true })
   reviews: ProductReview[];
 
-  calculateNewRating(rating: number) {
+  calculateNewRating(rating: number): void {
     this.totalReview += 1;
     this.rating = this.rating * (this.totalReview - 1) / this.totalReview + rating / this.totalReview;
   }

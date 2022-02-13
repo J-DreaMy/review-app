@@ -1,6 +1,7 @@
 const productId = 1;
 const serverUrl = process.env.VITE_API_URL;
 const review = { text: "", rating: 1, productId };
+const round = (val) => Math.round(val * 10) / 10;
 
 window.onload = async () => {
   await getProduct(productId);
@@ -25,6 +26,14 @@ modalExit.addEventListener("click", closeModal);
 
 const reviewForm = document.querySelector("#review-form");
 reviewForm.addEventListener("submit", createReview);
+
+const inputRating = document.querySelector("#input-rating");
+for (const [i, inputStar] of Object.entries(inputRating.children)) {
+  const rating = Number(i) + 1;
+  inputStar.addEventListener("click", () => setRatingReview(rating))
+  inputStar.addEventListener("mouseenter", () => previewRatingReview(rating))
+  inputStar.addEventListener("mouseleave", () => previewRatingReview())
+}
 
 async function getProduct(id) {
   const res = await fetch(`${serverUrl}/products/${id}`, {
@@ -52,12 +61,14 @@ async function createReview(event) {
   });
   const productReview = await res.json();
   closeModal();
-  getProduct(productReview.product.id)
+  getProduct(productReview.product.id);
 }
 
 function renderProductPage(product) {
   document.getElementById("product-title").innerHTML = product.title;
-  document.getElementById("product-rating-section").innerHTML = `<div class="product-rating">${product.rating}</div>`;
+  document.getElementById("product-rating-section").innerHTML = `<div class="product-rating">${round(
+    product.rating
+  )}</div>`;
 
   const productRatingHtmls = renderRatingHtml(product.rating);
   for (const html of productRatingHtmls) {
@@ -104,11 +115,28 @@ function renderReviewHtml(review) {
   return reviewsTextElement;
 }
 
-function addRatingReview(rating) {
-  review.rating = rating;
+function previewRatingReview(value) {
   const starHtmls = document.getElementById("input-rating").getElementsByClassName("star");
+  let rating = value || review.rating;
   for (var i = 0; i < starHtmls.length; i++) {
     if (i < rating) {
+      starHtmls.item(i).classList.remove("star-off");
+      starHtmls.item(i).classList.add("star-on");
+    } else {
+      starHtmls.item(i).classList.remove("star-on");
+      starHtmls.item(i).classList.add("star-off");
+    }
+  }
+}
+
+function setRatingReview(rating) {
+  review.rating = rating;
+}
+
+function setDefaultRatingReview() {
+  const starHtmls = document.getElementById("input-rating").getElementsByClassName("star");
+  for (var i = 0; i < starHtmls.length; i++) {
+    if (i < review.rating) {
       starHtmls.item(i).classList.remove("star-off");
       starHtmls.item(i).classList.add("star-on");
     } else {
@@ -121,8 +149,9 @@ function addRatingReview(rating) {
 function resetForm() {
   review.text = "";
   review.rating = 1;
-  document.getElementById("input-text-review").value = "";
-  addRatingReview(review.rating);
+  setTimeout(() => {
+    setRatingReview(review.rating);
+    previewRatingReview(review.rating);
+    document.getElementById("input-text-review").value = "";
+  }, 200);
 }
-
-window.addRatingReview = addRatingReview;

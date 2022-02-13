@@ -9,14 +9,13 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div id="app">
     <div class="product-card">
       <div id="product-title" class="product-title">...</div>
-      <div class="row">
+      <div class="row" style="min-width: 420px;">
         <div id="product-rating-section" class="row">
           <div class="product-rating">0</div>
           <div class="star star-off"></div>
@@ -43,14 +42,14 @@
       <div class="text-h1">What's Your rating?</div>
       <div class="text-semibold">Rating</div>
       <div id="input-rating" class="row">
-        <div onclick="addRatingReview(1)" class="star star-on cursor-pointer"></div>
-        <div onclick="addRatingReview(2)" class="star star-off cursor-pointer"></div>
-        <div onclick="addRatingReview(3)" class="star star-off cursor-pointer"></div>
-        <div onclick="addRatingReview(4)" class="star star-off cursor-pointer"></div>
-        <div onclick="addRatingReview(5)" class="star star-off cursor-pointer"></div>
+        <div class="star star-off cursor-pointer"></div>
+        <div class="star star-off cursor-pointer"></div>
+        <div class="star star-off cursor-pointer"></div>
+        <div class="star star-off cursor-pointer"></div>
+        <div class="star star-off cursor-pointer"></div>
       </div>
       <div>Review</div>
-      <input id="input-text-review" class="form-input" placeholder="Start typing..." />
+      <input id="input-text-review" class="form-input" placeholder="Start typing..." autocomplete="off" />
       <button id="review-submit-btn" class="btn" type="submit" style="width: 180px;">Submit review</button>
     </form>
   </div>

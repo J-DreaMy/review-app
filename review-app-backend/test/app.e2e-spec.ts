@@ -48,7 +48,7 @@ describe('App (e2e)', () => {
     }
 
     {
-      const createProductReviewDto = { productId: 2, text: "Good Good Good", rating: 4.0 }
+      const createProductReviewDto = { productId: 2, text: "Good Good Good", rating: 4.5 }
       const res = await request(httpServer).post('/product-reviews').send(createProductReviewDto);
       expect(res.status).toBe(201);
       expect(res.body).toMatchObject(createProductReviewDto);
@@ -64,8 +64,15 @@ describe('App (e2e)', () => {
     {
       const res = await request(httpServer).get('/products/2');
       expect(res.status).toBe(200);
-      expect(res.body).toMatchObject({ title: "Hello My Friends", rating: 3.5, totalReview: 2 });
+      expect(res.body).toMatchObject({ title: "Hello My Friends", rating: 3.75, totalReview: 2 });
     }
+  });
+
+  it('create product review with non half star', async () => {
+    const createProductReviewDto = { productId: 2, text: "Throw the book", rating: 3.2 }
+    const res = await request(httpServer).post('/product-reviews').send(createProductReviewDto);
+    expect(res.status).toBe(400);
+    expect(res.body.message).toContain("The rating only accept half star");
   });
 
   it('get all products', async () => {
