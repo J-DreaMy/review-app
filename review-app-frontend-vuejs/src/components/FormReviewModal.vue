@@ -1,5 +1,5 @@
 <template>
-  <transition name="modal">
+  <transition name="fade">
     <div v-if="currentValue" class="modal">
       <div class="modal-bg modal-exit" @click="closeModal"></div>
       <form class="modal-container column" style="align-items: start; width: 420px; gap: 20px">
@@ -50,21 +50,17 @@ const createProductReview = async (event) => {
 </script>
 
 <style scoped>
-.modal-enter {
-  opacity: 1;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
 }
-.modal-leave-active {
+
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
-}
-.modal-enter .modal-leave-active {
-  transition: all 0.3s ease;
-  transition-delay: 0s;
 }
 .modal {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  transition: all 0.3s ease;
   top: 0;
   left: 0;
   display: flex;

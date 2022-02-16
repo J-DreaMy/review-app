@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="row" style="gap: 0px 8px">
-      <template v-for="i in 5">
-        <div class="star" :class="classObject(i)"></div>
-      </template>
+  <div class="column" style="height: 35px; justify-content: center; height: 35px">
+    <div class="row star-row">
+      <div v-for="i in 5" class="star" :class="classObject(i)"></div>
     </div>
     <div class="row boxes" @mouseleave="setDefaultRating()">
       <div v-for="i in 10" class="box-hover" @mouseenter="setCurrentRating(i)" @click="setRating(i)"></div>
@@ -37,12 +35,12 @@ const classObject = (rating) => ({
 
 <style scoped>
 .boxes {
-  margin-top: -30px;
+  margin-top: -35px;
   width: max-content;
 }
 .box-hover {
   width: 15px;
-  height: 40px;
+  height: 35px;
   padding: 0px 1.5px;
   display: inline-block;
 }

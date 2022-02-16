@@ -6,15 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-textarea {
-  font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
-  resize: none;
-}
-
-#loadOverlay {
-  display: none;
-}
-
 #app {
   text-align: center;
   color: #000;
@@ -82,6 +73,10 @@ textarea {
 .seperator {
   border: 1px solid #b9b9b9;
   margin: 16px 0px;
+}
+
+.star-row {
+  gap: 0px 6px;
 }
 
 .star {

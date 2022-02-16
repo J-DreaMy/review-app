@@ -21,6 +21,7 @@ textarea {
   border: 0;
   width: 100%;
   -webkit-appearance: none;
+  margin-bottom: 4px;
 }
 
 .form-input:focus {
@@ -162,19 +163,6 @@ textarea {
   background: #fff;
   position: relative;
   padding: 24px;
-}
-
-.modal-close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  outline: none;
-  appearance: none;
-  color: red;
-  background: none;
-  border: 0px;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 #load-overlay {
