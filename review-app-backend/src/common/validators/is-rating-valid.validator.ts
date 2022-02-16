@@ -10,7 +10,7 @@ export function IsRatingValid(validationOptions?: ValidationOptions) {
       validator: {
         validate(value: any, args: ValidationArguments) {
           if (Number.isInteger(value)) return true;
-          return value % 2 == 0.5;
+          return value % 1 == 0.5;
         },
         defaultMessage() {
           return 'The rating only support half stars';

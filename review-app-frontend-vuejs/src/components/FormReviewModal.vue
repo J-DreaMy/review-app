@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div v-if="modelValue" class="modal">
+    <div v-if="currentValue" class="modal">
       <div class="modal-bg modal-exit" @click="closeModal"></div>
       <form class="modal-container column" style="align-items: start; width: 420px; gap: 20px">
         <div class="text-h1">What's Your rating?</div>
@@ -15,26 +15,37 @@
 </template>
 
 <script setup>
-import { defineEmits, defineProps, ref } from 'vue';
+import { computed, ref } from 'vue';
 import axios from '../common/axios';
 import RatingInput from './RatingInput.vue';
 
-defineProps({
+const props = defineProps({
   modelValue: Boolean,
 });
 
 const emit = defineEmits(['update:modelValue', 'onSubmit']);
+const currentValue = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value),
+});
+
 const closeModal = () => {
-  emit('update:modelValue', false);
+  currentValue.value = false;
 };
 
 const productReview = ref({ text: '', rating: 1, productId: 1 });
 const createProductReview = async (event) => {
   event.preventDefault();
   if (!productReview.value.text) return alert('Please input your review!');
-  const res = await axios.post('/product-reviews', productReview.value);
-  closeModal();
-  emit('onSubmit', res.data);
+  try {
+    const res = await axios.post('/product-reviews', productReview.value);
+    emit('onSubmit', res.data);
+    closeModal();
+    productReview.value = { text: '', rating: 1, productId: 1 };
+  } catch (error) {
+    if (!error.response.data.message) return;
+    alert(error.response.data.message);
+  }
 };
 </script>
 

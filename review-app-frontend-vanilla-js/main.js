@@ -43,9 +43,9 @@ async function getProduct(id) {
         Accept: "application/json",
       },
     });
-    if (res.status == 404) throw new Error(`Product with id: ${id} not found!`);
-    const product = await res.json();
-    renderProductPage(product);
+    const json = await res.json();
+    if (res.status != 200) throw new Error(json.message);
+    renderProductPage(json);
   } catch (error) {
     alert(error.message);
   }

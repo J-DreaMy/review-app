@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 body {
   font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
@@ -11,6 +11,10 @@ textarea {
   resize: none;
 }
 
+#loadOverlay {
+  display: none;
+}
+
 #app {
   text-align: center;
   color: #000;
@@ -20,6 +24,7 @@ textarea {
 .form-input {
   border: 0;
   margin-bottom: 4px;
+  width: 100%;
   -webkit-appearance: none;
 }
 
@@ -66,7 +71,7 @@ textarea {
   cursor: pointer;
   background-color: #fff;
   color: #757575;
-  font-family: "Helvetica";
+  font-family: 'Helvetica';
   font-size: 17px;
   font-weight: 600;
   border: 2px solid #e0e0e0;
@@ -85,20 +90,13 @@ textarea {
 }
 
 .star-off {
-  background: url("./assets/star-off.svg") no-repeat;
+  background: url('./assets/star-off.svg') no-repeat;
 }
 
 .star-on {
-  background: url("./assets/star-on.svg") no-repeat;
+  background: url('./assets/star-on.svg') no-repeat;
 }
 
 .star-half {
-  background: url("./assets/star-half.svg") no-repeat;
-}
-
-.rating::-webkit-slider-runnable-track {
-  background: url("./assets/star-off.svg");
-  block-size: 100%;
-  height: 30px;
-  mask: repeat left center/3rem url("./assets/star-off.svg");
+  background: url('./assets/star-half.svg') no-repeat;
 }

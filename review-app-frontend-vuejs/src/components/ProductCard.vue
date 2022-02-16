@@ -22,8 +22,8 @@
         <div class="review-text">{{ review.text }}</div>
       </div>
     </div>
-    <FormReviewModal v-model="showModal" @onSubmit="handleCreatedProductReview" />
   </div>
+  <FormReviewModal v-model="showModal" @onSubmit="handleCreatedProductReview" />
 </template>
 
 <script setup>
@@ -36,6 +36,7 @@ import Rating from './Rating.vue';
 const product = ref({ title: '...', star: 0, reviews: [] });
 const isLoading = ref(false);
 const showModal = ref(false);
+
 socket.on('connect', () => console.log('socket connected'));
 socket.on('sendNewProductReview', (data) => updateProductRating(data));
 
