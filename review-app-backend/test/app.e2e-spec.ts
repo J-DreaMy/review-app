@@ -72,7 +72,7 @@ describe('App (e2e)', () => {
     const createProductReviewDto = { productId: 2, text: "Throw the book", rating: 3.2 }
     const res = await request(httpServer).post('/product-reviews').send(createProductReviewDto);
     expect(res.status).toBe(400);
-    expect(res.body.message).toContain("The rating only accept half star");
+    expect(res.body.message).toContain("The rating only support half stars");
   });
 
   it('get all products', async () => {

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
 body {
   font-family: Roboto, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -80,7 +82,6 @@ textarea {
 .star {
   width: 30px;
   height: 30px;
-  margin: 0px;
 }
 
 .star-off {

@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div class="row" style="gap: 0px 6px">
-      <template v-for="i in 5">
-        <div class="star" :class="classObject(i)"></div>
-      </template>
-    </div>
+  <div class="row" style="gap: 0px 6px">
+    <template v-for="i in 5">
+      <div class="star" :class="classObject(i)"></div>
+    </template>
   </div>
 </template>
 

@@ -30,20 +30,25 @@ reviewForm.addEventListener("submit", createReview);
 const inputRating = document.querySelector("#input-rating");
 for (const [i, inputStar] of Object.entries(inputRating.children)) {
   const rating = Number(i) + 1;
-  inputStar.addEventListener("click", () => setRatingReview(rating))
-  inputStar.addEventListener("mouseenter", () => previewRatingReview(rating))
-  inputStar.addEventListener("mouseleave", () => previewRatingReview())
+  inputStar.addEventListener("click", () => setRatingReview(rating));
+  inputStar.addEventListener("mouseenter", () => previewRatingReview(rating));
+  inputStar.addEventListener("mouseleave", () => previewRatingReview());
 }
 
 async function getProduct(id) {
-  const res = await fetch(`${serverUrl}/products/${id}`, {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
-  const product = await res.json();
-  renderProductPage(product);
+  try {
+    const res = await fetch(`${serverUrl}/products/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (res.status == 404) throw new Error(`Product with id: ${id} not found!`);
+    const product = await res.json();
+    renderProductPage(product);
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 async function createReview(event) {
@@ -65,18 +70,18 @@ async function createReview(event) {
 }
 
 function renderProductPage(product) {
-  document.getElementById("product-title").innerHTML = product.title;
-  document.getElementById("product-rating-section").innerHTML = `<div class="product-rating">${round(
-    product.rating
-  )}</div>`;
+  document.querySelector("#product-title").innerHTML = product.title;
+  document.querySelector(".product-rating").innerHTML = round(product.rating);
 
   const productRatingHtmls = renderRatingHtml(product.rating);
-  for (const html of productRatingHtmls) {
-    document.getElementById("product-rating-section").appendChild(html);
+  const rowStar = document.querySelector(".row-star");
+  rowStar.innerHTML = "";
+  for (const ratingHtml of productRatingHtmls) {
+    rowStar.appendChild(ratingHtml);
   }
 
   const reviewSectionHtml = document.getElementById("review-section");
-  reviewSectionHtml.innerHTML = "";
+  reviewSectionHtml.innerHTML = `<div class="reviews-text">Reviews</div>`;
   for (const review of product.reviews) {
     reviewSectionHtml.append(renderReviewHtml(review));
   }
@@ -104,8 +109,13 @@ function renderRatingHtml(rating) {
 function renderReviewHtml(review) {
   const reviewsTextElement = document.createElement("div");
   reviewsTextElement.className = "row review-box";
+
+  const rowStar = document.createElement("div");
+  rowStar.className = "row row-star";
   const reviewRatingHtmls = renderRatingHtml(review.rating);
-  for (const html of reviewRatingHtmls) reviewsTextElement.appendChild(html);
+  for (const html of reviewRatingHtmls) rowStar.appendChild(html);
+
+  reviewsTextElement.appendChild(rowStar);
   reviewsTextElement.innerHTML += `
       <div style="width: 16px;"></div>
       <div class="text-bold">${review.rating}</div>

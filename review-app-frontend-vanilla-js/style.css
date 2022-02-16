@@ -92,7 +92,7 @@ textarea {
 
 .product-rating {
   font-size: 38px;
-  margin: 0 16px 0 2px;
+  margin: 0px 16px 0px 2px;
 }
 
 .review-section {
@@ -112,10 +112,13 @@ textarea {
   color: #8d8d8d;
 }
 
+.row-star {
+  gap: 0px 6px;
+}
+
 .star {
   width: 30px;
   height: 30px;
-  margin: 0px 2.5px;
 }
 
 .star-off {
